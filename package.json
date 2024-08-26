@@ -1,0 +1,38 @@
+{
+  "name": "contactpro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "nodemon --watch ./src --exec ts-node ./src/index.ts",
+    "build": "tsup",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "dotenv": "16.4.5",
+    "express": "4.19.2",
+    "helmet": "7.1.0"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.17",
+    "@types/dotenv": "4.0.3",
+    "@types/express": "4.17.21",
+    "@types/node": "12.12.17",
+    "nodemon": "3.1.4",
+    "ts-node": "10.9.2",
+    "tsup": "8.0.2",
+    "typescript": "5.4.4"
+  },
+  "tsup": {
+    "entry": [
+      "./src"
+    ],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
