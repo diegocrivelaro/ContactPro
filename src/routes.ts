@@ -9,3 +9,4 @@ router.get("/ping", (req, res) => {
 });
 
 router.get("/contacts", ContactController.index);
+router.get("/contacts/:id", ContactController.show);
