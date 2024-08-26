@@ -7,7 +7,6 @@ class ContactController {
     const contacts = await ContactRepository.findAll();
 
     res.json({
-      status: 200,
       message: "Success",
       data: contacts,
     });
@@ -19,7 +18,6 @@ class ContactController {
 
     if (!contacts) {
       res.status(404).json({
-        status: 404,
         message: "Not Found",
         data: { id },
       });
@@ -27,14 +25,29 @@ class ContactController {
     }
 
     res.json({
-      status: 200,
       message: "Success",
       data: contacts,
     });
   }
   async store(req: Request, res: Response) {}
   async update(req: Request, res: Response) {}
-  async delete(req: Request, res: Response) {}
+  async delete(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const contacts = await ContactRepository.findById(id);
+
+    if (!contacts) {
+      res.status(404).json({
+        message: "Not Found",
+        data: { id },
+      });
+      return;
+    }
+
+    await ContactRepository.delete(id);
+
+    res.sendStatus(204);
+  }
 }
 
 export default new ContactController();
